@@ -1,0 +1,32 @@
+#include <bits/stdc++.h>
+#define FILEIO freopen("input.txt", "r", stdin); \
+               freopen("output.txt", "w", stdout); 
+
+using namespace std;
+
+int cycle(int x){
+    int cyc = 0;
+    while(1){
+        cyc++;
+        if(x==1) break;
+        else if(x%2 == 1) x = 3*x+1;
+        else x/=2;
+    }
+    return cyc;
+}
+
+int main(){
+    //FILEIO
+    int i, j;
+    while(scanf("%d %d",&i,&j)==2){
+        printf("%d %d", i, j);
+        int mxCycle = 0;
+        if(i>j) swap(i, j);
+        for(int it = i; it <= j; it++){
+            mxCycle = max(mxCycle, cycle(it));
+        }
+        printf(" %d\n", mxCycle); 
+    }
+
+    return 0;
+}
